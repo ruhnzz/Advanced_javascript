@@ -1,0 +1,21 @@
+<!-- DOM Manipulation -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="first">hello1</h1>
+    <h1 class="second">hello2</h1>
+    <h1>hello3</h1>
+    <script >
+     console.log(document.getElementById("first")) //output in tag 
+     console.dir(document.getElementById("first")) // output in dropdwon format best to use this
+     console.dir(document.getElementsByClassName("second"))
+     console.dir(document.querySelector("h1"))// selcts the first h1 in body
+     console.dir(document.querySelectorAll("h1")) // selects all h1 and places in array
+    </script>
+</body>
+</html>
