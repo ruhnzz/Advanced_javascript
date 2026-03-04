@@ -2,12 +2,11 @@
 
 # DOM MANIPULATION 
 
-
 1. What is DOM?
 
 DOM stands for Document Object Model.
 
-Definition (Interview Friendly):
+Definition :
 DOM is a programming interface for HTML documents that represents the page as a tree of objects so JavaScript can access and modify content, structure, and styles dynamically.
 
 Browser converts HTML into a tree structure like:
@@ -21,26 +20,28 @@ Document
 
 Each element becomes a node (object).
 
----
+
 
 2. document object
 
 Definition:
-The document object represents the entire HTML page loaded in the browser.
+The document object represents the entire HTML page loaded in the browser. It is the root object of the DOM and allows JavaScript to access and manipulate all elements in the webpage.
+
+In simple words:
+
+document = whole web page
 
 It is the entry point to access and manipulate DOM.
 
-Example:
-
-```js
-document
-```
-
----
 
 3. Selecting Elements in DOM
 
 These are called DOM Selector Methods.
+```html
+<h1 id="first">hello1</h1>
+    <h1 class="second">hello2</h1>
+    <h1>hello3</h1>
+```
 
 A) getElementById()
 
@@ -266,6 +267,7 @@ If you want next, we can cover:
 * Event bubbling & capturing
 
 Tell me what you want next 🚀
+
 
 
 
