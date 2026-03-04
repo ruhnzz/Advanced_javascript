@@ -61,7 +61,6 @@ Important points:
 Interview tip:
 It returns an Element object, not an array.
 
----
 
 B) getElementsByClassName()
 
@@ -82,7 +81,6 @@ Interview question:
 Difference between HTMLCollection and Array?
 HTMLCollection does not have array methods like map(), filter().
 
----
 
 C) querySelector()
 
@@ -124,7 +122,6 @@ Important:
 * Not exactly an array, but supports forEach
 * Static (does NOT auto update like HTMLCollection)
 
----
 
 4. console.log vs console.dir
 
@@ -140,7 +137,6 @@ Shows:
 
 <h1 id="first">hello1</h1>
 
----
 
 B) console.dir()
 
@@ -160,7 +156,6 @@ Best for debugging because:
 Interview tip:
 Use console.dir() when you want to inspect element properties.
 
----
 
 5. HTMLCollection vs NodeList
 
@@ -180,7 +175,6 @@ NodeList
 * Supports forEach
 * More modern
 
----
 
 6. DOM Node Types (Important Concept)
 
@@ -202,7 +196,6 @@ Example:
 "h1" → element node
 "Hello" → text node
 
----
 
 7. Why DOM Manipulation is Important?
 
@@ -215,7 +208,6 @@ It allows:
 * Handling user events
 * Building interactive UI
 
----
 
 8. Interview Quick Revision Summary
 
@@ -242,31 +234,7 @@ Difference between HTMLCollection and NodeList?
 When to use console.dir?
 To inspect element properties.
 
----
 
-9. Bonus Tip (Very Important for You)
-
-Since you are moving toward React and full-stack development, understanding DOM deeply helps in:
-
-* Virtual DOM concept (React)
-* Event bubbling
-* Performance optimization
-* Understanding re-renders
-
-This is foundational knowledge.
-
----
-
-If you want next, we can cover:
-
-* Changing content (innerHTML, textContent)
-* Changing styles
-* Creating and appending elements
-* Removing elements
-* Event handling
-* Event bubbling & capturing
-
-Tell me what you want next 🚀
 
 
 
