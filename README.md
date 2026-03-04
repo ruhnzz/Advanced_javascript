@@ -232,6 +232,142 @@ Difference between HTMLCollection and NodeList?
 When to use console.dir?
 To inspect element properties.
 
+# TEXT MANIPULATION IN DOM 
+
+What is Text Manipulation?
+
+Definition:
+Text manipulation means changing the content of an HTML element dynamically using JavaScript.
+
+Example:
+
+```html
+<h1>Hello</h1>
+```
+
+Using JS, we change it to:
+
+Hello World
+```js
+let val = document.querySelector("h1")
+    console.dir(val)
+```
+
+within dropdown we found 
+* innerHTML: "Hello"
+* innerText: "Hello"
+*  textContent:"Hello"
+  
+ form above drop down we can confirm that val is object because it has properties
+1. innerHTML
+
+Definition:
+innerHTML gets or sets the HTML content inside an element.
+
+Example:
+
+```js
+val.innerHTML = "<i style='color:red'>Hello World</i>";
+```
+
+Important points:
+
+* Parses HTML
+* Can insert tags
+* Can insert styled content
+* Risk of XSS if using user input
+
+2. innerText
+
+Definition:
+innerText gets or sets the visible text content of an element.
+
+Example:
+
+```js
+val.innerText = "Hello World";
+```
+
+Important:
+
+* Ignores hidden elements
+* Respects CSS styles
+* Does not parse HTML
+
+3. textContent
+
+Definition:
+textContent gets or sets all text inside an element, including hidden text.
+
+Example:
+
+```js
+val.textContent = "Hello World";
+```
+
+Important:
+
+* Faster than innerText
+* Does NOT consider CSS
+* Does NOT parse HTML
+
+
+ Difference Between innerHTML, innerText, textContent
+
+Feature Comparison:
+
+innerHTML
+
+* Parses HTML
+* Can add tags
+* Slower
+* Security risk with user input
+
+innerText
+
+* Only visible text
+* Respects CSS
+* Slower than textContent
+
+textContent
+
+* All text
+* Ignores CSS
+* Fastest
+* Safest for plain text
+
+Interview Answer:
+
+Use innerHTML when you need to insert HTML.
+Use textContent when inserting plain text (recommended).
+
+
+ Important Concept
+
+DOM elements are objects.
+
+You confirmed this by:
+
+```js
+console.dir(val);
+```
+
+Because you saw properties like:
+
+* innerHTML
+* innerText
+* textContent
+
+So when we manipulate the DOM, we are modifying object properties.
+
+10. Interview One-Line Summary
+
+Text manipulation in DOM is done by modifying properties like innerHTML, innerText, and textContent of DOM element objects.
+
+
+
+
+
 
 
 
