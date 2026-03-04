@@ -364,6 +364,235 @@ So when we manipulate the DOM, we are modifying object properties.
 
 Text manipulation in DOM is done by modifying properties like innerHTML, innerText, and textContent of DOM element objects.
 
+Very good 👏
+Now you're learning real DOM control. This is an important interview topic.
+
+Let’s convert your code into clean, interview-friendly notes.
+
+
+# ATTRIBUTE MANIPULATION IN DOM
+
+1. What is an Attribute?
+
+Definition:
+An attribute provides additional information about an HTML element.
+
+Example:
+
+```html
+<a href="https://google.com">Click</a>
+```
+
+Here:
+
+* href is an attribute
+* "[https://google.com](https://google.com)" is its value
+
+Attributes are written inside the opening tag.
+
+
+2. Why Attribute Manipulation?
+
+We manipulate attributes when we want to:
+
+* Change links dynamically
+* Add/remove classes
+* Enable/disable inputs
+* Add custom data attributes
+* Modify images (src)
+* Change form behavior
+
+
+3. Selecting the Element
+
+```js
+let a = document.querySelector("a");
+```
+
+This selects the first anchor tag and returns a DOM element object.
+
+You verified this using:
+
+```js
+console.dir(a);
+```
+
+Important concept:
+DOM elements are JavaScript objects with properties and methods.
+
+
+4. setAttribute()
+
+Definition:
+setAttribute() sets or updates an attribute on an element.
+
+Syntax:
+
+```js
+element.setAttribute("attributeName", "value");
+```
+
+Example from your code:
+
+```js
+a.setAttribute("href","https://github.com");
+```
+
+What happens?
+
+* If attribute exists → value is updated
+* If attribute does not exist → attribute is created
+
+Interview Point:
+setAttribute always works at the HTML attribute level.
+
+5. getAttribute()
+
+Definition:
+getAttribute() returns the value of a specified attribute.
+
+Syntax:
+
+```js
+element.getAttribute("attributeName");
+```
+
+Example:
+
+```js
+let attributeValue = a.getAttribute("href");
+console.log(attributeValue);
+```
+
+Output:
+[https://github.com](https://github.com)
+
+If attribute does not exist → returns null
+
+6. removeAttribute()
+
+Definition:
+removeAttribute() removes an attribute from an element.
+
+Syntax:
+
+```js
+element.removeAttribute("attributeName");
+```
+Example:
+
+```js
+a.removeAttribute("href");
+let att = a.getAttribute("href");
+console.log(att); // null
+```
+
+After removal:
+
+* The anchor tag is no longer clickable
+* getAttribute("href") returns null
+
+
+7. Direct Property vs setAttribute (Important Interview Question)
+
+```
+
+Direct Property:
+
+```js
+a.href = "https://google.com";
+```
+
+* Works with DOM properties
+* Often gives fully resolved URL
+* More common in modern JS
+
+setAttribute:
+
+```js
+a.setAttribute("href","https://github.com");
+```
+
+* Works directly on HTML attribute
+* More generic
+* Can set custom attributes
+
+Interview Answer:
+
+Use direct property for standard attributes like:
+
+* href
+* src
+* value
+* checked
+
+Use setAttribute when:
+
+* Setting custom attributes
+* Dynamically adding attributes
+* Working generically
+
+
+8. Commonly Manipulated Attributes
+
+Links:
+
+```js
+a.href
+```
+
+Images:
+
+```js
+img.src
+```
+
+Inputs:
+
+```js
+input.value
+input.disabled
+```
+
+Classes:
+
+```js
+element.className
+element.classList
+```
+
+9. Important Interview Concept
+
+Attributes vs Properties
+
+Attribute:
+
+* Defined in HTML
+* Accessed via getAttribute()
+
+Property:
+
+* Exists on DOM object
+* Accessed via dot notation
+
+Example:
+
+```js
+a.getAttribute("href");  // attribute
+a.href;                  // property
+```
+
+Sometimes property value may differ slightly (like full URL formatting).
+
+
+11. Interview One-Line Summary
+
+Attribute manipulation in DOM is done using setAttribute(), getAttribute(), and removeAttribute() to dynamically modify HTML element attributes at runtime.
+
+
+
+
+
 
 
 
