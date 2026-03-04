@@ -133,7 +133,7 @@ Prints element as HTML tag view.
 console.log(document.getElementById("first"))
 ```
 
-Shows:"<h1 id="first">hello1</h1>"
+Shows: <!--<h1 id="first">hello1</h1>-->
 
 
 B) console.dir()
@@ -231,6 +231,7 @@ Difference between HTMLCollection and NodeList?
 
 When to use console.dir?
 To inspect element properties.
+
 
 
 
