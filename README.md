@@ -1,8 +1,7 @@
 ﻿# Advanced_javascript
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-DOM MANIPULATION 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# DOM MANIPULATION 
+
 
 1. What is DOM?
 
@@ -267,5 +266,6 @@ If you want next, we can cover:
 * Event bubbling & capturing
 
 Tell me what you want next 🚀
+
 
 
