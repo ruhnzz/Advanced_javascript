@@ -813,7 +813,6 @@ Step 4 – Remove if needed
 h1.remove();
 ```
 
-────────────────────────
 
 8. Common Use Cases (Real Projects)
 
@@ -834,13 +833,11 @@ li.textContent = "New Item";
 document.querySelector("ul").append(li);
 ```
 
-────────────────────────
 
 9. Interview One-Line Answer
 
 DOM element creation is done using `createElement()`, and elements can be inserted into the DOM using `append()`, `appendChild()`, or `prepend()`, and removed using `remove()` or `removeChild()`.
 
-────────────────────────
 
 10. Key Differences Summary
 
@@ -861,6 +858,225 @@ Removes element directly.
 
 removeChild
 Parent removes a specific child.
+
+# DOM Styling and Class Manipulation
+
+Definition
+DOM styling means changing the appearance (CSS styles) of HTML elements using JavaScript.
+
+JavaScript can modify:
+
+* inline styles
+* CSS classes
+* attributes
+
+
+1. Styling using .style property
+
+Definition
+The style property is used to apply CSS styles directly to an element using JavaScript.
+
+Syntax
+
+```javascript
+element.style.property = "value"
+```
+
+Example
+
+```javascript
+let h1 = document.querySelector("h1");
+
+h1.style.color = "red";
+h1.style.backgroundColor = "yellow";
+h1.style.border = "2px solid black";
+h1.style.borderRadius = "50px";
+h1.style.textAlign = "center";
+```
+
+Important rule
+
+CSS properties written with hyphen (-) are converted to camelCase in JavaScript.
+
+Examples
+
+CSS → JavaScript
+
+background-color → backgroundColor
+border-radius → borderRadius
+text-align → textAlign
+font-size → fontSize
+
+
+2. Styling using CSS classes (Best Practice)
+
+Instead of applying many styles using `.style`, developers usually add or remove CSS classes.
+
+Why this is better:
+
+* cleaner code
+* reusable styles
+* separation of HTML, CSS, and JavaScript
+
+Example CSS
+
+```css
+.styling{
+    color: red;
+    background-color: yellow;
+    border: 2px solid black;
+    border-radius: 50px;
+    text-align: center;
+}
+```
+
+Instead of writing many `.style` lines, we attach the class using JavaScript.
+
+
+3. classList property
+
+Definition
+classList is a DOM property used to add, remove, or toggle CSS classes from an element.
+
+Example
+
+```javascript
+let h1 = document.querySelector("h1");
+```
+
+
+4. classList.add()
+
+Definition
+Adds a class to the element.
+
+Syntax
+
+```javascript
+element.classList.add("className")
+```
+
+Example
+
+```javascript
+h1.classList.add("styling");
+```
+
+
+5. classList.remove()
+
+Definition
+Removes a class from the element.
+
+Syntax
+
+```javascript
+element.classList.remove("className")
+```
+
+Example
+
+```javascript
+h1.classList.remove("styling");
+```
+
+
+6. classList.toggle()
+
+Definition
+Toggle means switch.
+
+If the class exists → it removes it
+If the class does not exist → it adds it
+
+Syntax
+
+```javascript
+element.classList.toggle("className")
+```
+
+Example
+
+```javascript
+h1.classList.toggle("styling");
+```
+
+This is commonly used for:
+
+* dark mode
+* show/hide menus
+* interactive UI effects
+
+
+7. Difference between classList and className
+
+className
+
+```javascript
+h1.className = "styling"
+```
+
+* replaces all existing classes
+* not flexible
+
+classList
+
+```javascript
+h1.classList.add("styling")
+```
+
+* adds or removes classes individually
+* safer and recommended
+
+
+8. Why classList is preferred in real projects
+
+Advantages
+
+* clean code
+* better performance
+* reusable CSS
+* easier maintenance
+
+Example
+
+Bad practice
+
+```javascript
+h1.style.color = "red"
+h1.style.backgroundColor = "yellow"
+```
+
+Good practice
+
+```javascript
+h1.classList.add("styling")
+```
+
+---
+
+Quick Interview Summary
+
+DOM Styling
+Changing the appearance of HTML elements using JavaScript.
+
+.style
+Used to apply inline CSS styles directly to an element.
+
+classList
+A DOM property used to manipulate CSS classes.
+
+Methods of classList
+
+* add()
+* remove()
+* toggle()
+
+Best Practice
+Use CSS classes with `classList` instead of many `.style` properties.
+
+
+
 
 
 
