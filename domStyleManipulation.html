@@ -1,0 +1,42 @@
+<!--  
+  using .style-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .styling{
+            color: red;
+            background-color: yellow;
+            border: 2px solid black;
+            border-radius: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1 class="styling">hello styling</h1> here we are attaching the class in html directly we can aslo do it using JS-->
+     <h1 >hello styling</h1>
+    <script>
+        let h1 = document.querySelector("h1");
+        console.dir(h1);
+        // h1.style.color = "red";
+        // h1.style.backgroundColor = "yellow"
+        // h1.style.border ="2px solid black"
+        // h1.style.borderRadius = "50px"
+        // h1.style.textAlign="center"
+//         CSS → JavaScript
+// background-color → backgroundColor
+// border-radius → borderRadius
+// text-align → textAlign
+
+// h1.classList="styling"
+h1.classList.add("styling")
+h1.classList.remove("styling") //remove styling class
+h1.classList.toggle("styling") // if class is present it removes if not resent it adds
+    </script>
+    
+</body>
+</html
