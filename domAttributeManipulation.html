@@ -1,0 +1,27 @@
+<!-- Attribute Manipulation
+ we use
+ setAttribute("prop name","value")
+ getAttribute()
+ removeAttribute() -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="">click here</a>
+    <script>
+    let a = document.querySelector("a");
+    console.dir(a);
+    // a.href = "https://google.com" 
+    a.setAttribute("href","https://github.com"); // helps to give the new value to attribute
+    let attributeValue = a.getAttribute("href"); //stores the attribute value
+    console.log(attributeValue)
+    a.removeAttribute("href")
+     let att = a.getAttribute("href"); //stores the attribute value
+    console.log(att) //null becuase we removed the attribute value
+    </script>
+</body>
+</html>

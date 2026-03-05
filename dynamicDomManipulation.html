@@ -1,0 +1,38 @@
+<!-- createElement
+ append or appendChild
+ remove or removeChild
+ prepend -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>hello 1</h1>
+        <h1>hello 2</h1>
+        <h1>hello 3</h1>
+    </div>
+    <script>
+        let h1 = document.createElement("h1");
+        console.dir(h1); //no text
+        h1.textContent = "Hello DOM";
+        //still no visible on the html page
+       // document.body.append(h1); // adds at the bottom of body(after script)
+        //document.body.prepend(h1); //adds at the top of body(before script)
+        // document.querySelector("body").append(h1);
+        document.querySelector("body").appendChild(h1);
+        // document.removeChild(h1); worng syntax
+        // h1.removeChild() ; only remove is working
+        h1.remove() // note no document.reomve it uses variable name then .remove()
+        let newh1 = document.createElement("h1");
+        newh1.textContent = "Hello from out";
+        //document.querySelector("body").append(h1); // adds at bottom
+        document.querySelector("body").prepend(h1); // adds at top
+
+    </script>
+</body>
+</html>

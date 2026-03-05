@@ -1,0 +1,29 @@
+ <!-- 1. Text Manipulation -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <script>
+    // text manipulation from hello to hello world
+    let val = document.querySelector("h1")
+    console.dir(val)
+// within dropdown we found innerHTML: "Hello",
+//  innerText: "Hello", textContent:"Hello"
+// form above drop down we can confirm that val is object because it has properties
+// val.innerHTML = "Hello World form innerHTML"
+// val.innerText = "Hello world from innerText" //this can also be used or else other 2 options
+// val.textContent = "Hello World from textContent"
+// if we want to manipulate anything we need find that prop and make changes
+
+//in inner html i can add tag and make changes
+// val.innerHTML = "<i style='color:red'>Hello World form innerHTML</i>"
+val.innerHTML = "<i style='color:red'>Hello World form innerHTML</i>"
+
+    </script>
+</body>
+</html>
