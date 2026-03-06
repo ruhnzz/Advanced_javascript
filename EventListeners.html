@@ -1,0 +1,28 @@
+<!-- Event : the action that happens 
+ Event Listener:  the actions reactions
+ element.addEventListener("event",function name without ())
+ Note: to pass functions in event listeners write outside then pass the function name in eventListener
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Apple</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae recusandae deleniti cumque.</p>
+    <script>
+        let h1 = document.querySelector("h1");
+        let changeRed = ()=>{h1.style.color="red" 
+        h1.style.backgroundColor="yellow"}
+        h1.addEventListener("click", changeRed)
+        h1.removeEventListener("click",changeRed)
+        let p = document.querySelector("p");
+        p.addEventListener("click",()=>p.style.color="green")
+        p.addEventListener("dblclick",()=>p.style.color="blue") // don't directly pass like this it will be difficult when we remove event listener
+       
+    </script>
+</body>
+</html>
