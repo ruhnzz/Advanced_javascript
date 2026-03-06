@@ -1244,7 +1244,6 @@ Advantages
 * better separation of HTML and JavaScript
 * easier maintenance
 
----
 
 Quick Interview Summary
 
@@ -1262,6 +1261,7 @@ Used to remove an attached event from an element.
 
 Important rule
 Always pass the function reference (without parentheses).
+
 
 
 
