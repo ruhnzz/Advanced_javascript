@@ -1076,6 +1076,197 @@ Best Practice
 Use CSS classes with `classList` instead of many `.style` properties.
 
 
+----------------------------------------------------------------------------------------------------------------------------------
+
+# DOM Events and Event Listeners
+
+1. Event
+
+Definition
+An event is an action or occurrence that happens in the browser, usually triggered by the user or the browser itself.
+
+Examples of events
+
+* click
+* double click
+* mouseover
+* keypress
+* submit
+* input
+* load
+
+Example
+Clicking a button or pressing a key is an event.
+
+
+2. Event Listener
+
+Definition
+An Event Listener is a function that waits for a specific event to occur on an element and then executes some code in response.(action's reaction)
+
+Syntax
+
+```javascript
+element.addEventListener("event", function)
+```
+
+Example
+```html
+<h1>Apple</h1>
+```
+```javascript
+let h1 = document.querySelector("h1");
+
+let changeRed = ()=>{
+    h1.style.color = "red";
+    h1.style.backgroundColor = "yellow";
+}
+
+h1.addEventListener("click", changeRed);
+```
+
+Explanation
+
+When the user clicks the `<h1>` element:
+
+* the event "click" occurs
+* the function `changeRed()` runs
+* the text becomes red and background becomes yellow
+
+
+4. Important rule when using functions in event listeners
+
+Do NOT write parentheses while passing the function only function name without parenthesis().
+
+Correct
+
+```javascript
+h1.addEventListener("click", changeRed)
+```
+
+Wrong
+
+```javascript
+h1.addEventListener("click", changeRed())
+```
+
+Reason
+If parentheses are used, the function executes immediately instead of waiting for the event.
+
+5. removeEventListener()
+
+Definition
+removeEventListener() is used to remove an event listener from an element.
+
+Syntax
+
+```javascript
+element.removeEventListener("event", functionName)
+```
+
+Example
+
+```javascript
+h1.removeEventListener("click", changeRed)
+```
+
+Important rule
+The function must be declared separately to remove it.
+Arrow functions written directly cannot be removed easily.
+
+
+6. Multiple Event Listeners
+
+An element can have multiple events.
+
+Example
+
+```javascript
+let p = document.querySelector("p");
+
+p.addEventListener("click", ()=>{
+    p.style.color = "green";
+});
+
+p.addEventListener("dblclick", ()=>{
+    p.style.color = "blue";
+});
+```
+
+7. Common DOM Events
+
+Mouse Events
+
+* click
+* dblclick
+* mouseover
+* mouseout
+
+Keyboard Events
+
+* keydown
+* keyup
+* keypress
+
+Form Events
+
+* submit
+* input
+* change
+* focus
+* blur
+
+Browser Events
+
+* load
+* resize
+* scroll
+
+---
+
+8. Best Practice (Important for interviews)
+
+Instead of writing inline events in HTML like this:
+
+```html
+<button onclick="changeColor()"></button>
+```
+
+Use JavaScript event listeners:
+
+```javascript
+button.addEventListener("click", changeColor)
+```
+
+Advantages
+
+* cleaner code
+* better separation of HTML and JavaScript
+* easier maintenance
+
+---
+
+Quick Interview Summary
+
+Event
+An event is an action performed by the user or browser.
+
+Event Listener
+A function that listens for an event and executes code when the event occurs.
+
+addEventListener()
+Used to attach an event to an element.
+
+removeEventListener()
+Used to remove an attached event from an element.
+
+Important rule
+Always pass the function reference (without parentheses).
+
+
+
+
+
 
 
 
