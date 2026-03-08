@@ -1,0 +1,96 @@
+<!-- event bubbling -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        
+        .nav{
+            display: flex;
+            align-items: center;
+             background-color: rgb(252, 80, 80);
+            padding: 15px;
+        }
+       .nav h1{
+        color: white;
+        margin-right:auto ;
+        }
+        a{
+            margin: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+        a:hover{
+            color: antiquewhite;
+        }
+        button{
+            margin: 10px;
+            background-color:rgb(120, 120, 219);
+            border: 2px solid blue;
+            color: white;
+            border-radius: 5px;
+            font-size: 20px;
+            padding: 4px;
+        }
+        button:hover{
+            background-color: blue;
+        }
+        .box{
+            padding: 20px;
+            font-size: 20px;
+            margin: 20px;
+        }
+        li{
+            padding: 10px;
+        }
+        .lt{
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <h1>Event Bubbling</h1>
+            <a href="">Home</a>
+            <a href="">About</a>
+            <button>click me</button>
+        </div>
+    </div>
+    <div class="box">
+        <ul>
+            <li>Apple</li>
+            <li>Ball</li>
+            <li>Cat</li>
+            <li>Dog</li>
+        </ul>
+    </div>
+    <script>
+      // let add event listner on nav
+      document.querySelector(".nav").addEventListener("click",()=>{
+        alert("cliked on nav")
+      })
+      // so here when click on click me ,home or about we can see alert even though they don't have 
+      // eventlistener becuase they use parents eventlistener if they don't find there own
+
+      //whenever we click on any list item it should be striked so istead of writing eventlistener on 
+      //every li using event bubbling we will write on ul
+      document.querySelector("ul").addEventListener("click",(e)=>{
+        // e.target.style.textDecoration="line-through"
+        e.target.classList.toggle("lt");
+      })
+    </script>
+</body>
+</html>
