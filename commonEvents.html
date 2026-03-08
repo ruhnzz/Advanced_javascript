@@ -1,0 +1,203 @@
+<!-- common events -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+            padding: 5px;
+            margin: 10px;
+        }
+
+        .card{
+         border: 2px solid black;
+         max-width: 300px;
+         padding: 20px;
+         display: inline-block;
+         margin:20px;
+         
+        }
+        .profile{
+        border: 2px solid black;
+        width: 100px;
+         height: 100px;
+         border-radius: 50%;
+         text-align: center;
+         background-color:rgb(220, 220, 178);
+         overflow: hidden;
+         /* margin: 0 auto; */
+        
+        }
+        .profile img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .box{
+            border: 2px solid rgb(213, 47, 47);
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            /* position:absolute;
+            transition: cubic-bezier(0.19, 1, 0.22, 1) 1s; */
+        }
+        .key{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.click -->
+     <h2>Event Click</h2>
+    <h1>Common Events</h1> 
+
+     <!-- 2.input -->
+      <h1>Event input</h1>
+    <input type="text" placeholder="name">   
+
+      <!-- 3.change -->
+       <h1>Event Change</h1>
+    <div>
+    <h2 id="change">Select your device</h2> 
+    <select>
+        <option selected disabled>Choose your device</option>
+        <option value="samsung">Samsung</option>
+        <option value="apple">Iphone</option>
+        <option value="pixel">Google Pixel</option>
+        <option value="nothing">Nothing</option>
+    </select>
+    </div>
+    <!-- 4.submit 
+     whenever form is submitted it will be reloaded-->
+     <h1>Event Submit</h1>
+     <form>
+        <input class="inputs" type="text" placeholder="name">
+        <input class="inputs"  type="text" placeholder="age">
+        <input class="inputs" type="text" placeholder="email">
+        <input class="inputs" type="text" placeholder="profile">
+        <input class="inputs" type="submit">
+     </form>
+
+
+     <!-- 5. mouse over -->
+      <h1>Event Mouseover</h1>
+      <div class="box">
+      </div>
+    
+
+    <!-- key down and up -->
+     <div>
+     <h1>Event keydown and keyup</h1>
+     <h1 class="key">a</h1>
+    </div>
+
+
+    <script>
+        //1.click 
+        // let onClick = ()=>{h.style.color="red"} don't work because h is not defined 
+        //let onClick = ()=>{this.style.color="red"} not works because arrow function doesn't have this property
+        // we can't use this but we can use event objects with arrow functions which we read next
+        // function onClick (){this.style.color="red"} works this will work in function declaration 
+         let onClick = function(){this.style.color="red"} // this. will also works with function expression but not with arrow functio
+        document.querySelector("h1").addEventListener("click",onClick)
+
+        //2.input
+        // let onInput = function(){console.log("typed")} prints typed and at front gives no.of times we entered in that input
+        let onInput = function(e){
+            if(e.data!==null){ //we get null we type and remove that word
+            console.log(e.data)}}
+        document.querySelector("input").addEventListener("input",onInput);
+
+        //3.change
+        let onChange = function(e){
+            // console.log(e)
+            console.log(e.target.value);
+            document.querySelector("#change").textContent=`${e.target.value} Device Selected`;
+            document.querySelector("#change").style.textTransform="capitalize";
+        }
+        document.querySelector("select").addEventListener("change",onChange);
+
+        //4.submit
+        let form = document.querySelector("form");
+        form.addEventListener("submit",function(e){
+            e.preventDefault()
+      
+        let inputs = document.querySelectorAll(".inputs");
+        console.log(inputs)
+
+        let card = document.createElement("div");
+        card.classList.add("card")
+
+        let profile = document.createElement("div");
+        profile.classList.add("profile");
+
+        let img = document.createElement("img");
+        img.setAttribute("src",inputs[3].value)
+        let name = document.createElement("h3");
+        name.textContent=inputs[0].value
+        let age = document.createElement("h3");
+        age.textContent=inputs[1].value
+        let email = document.createElement("h3");
+        email.textContent = inputs[2].value
+        
+        profile.appendChild(img);
+        card.appendChild(profile);
+        card.appendChild(name)
+        card.appendChild(age)
+        card.appendChild(email)
+        document.querySelector("form").append(card)
+        //toempty form after printing in card
+        inputs.forEach((input)=>{
+            if(input.type!=="submit"){
+                input.value=""
+            }
+        })
+  })
+
+
+  // 5.1 mouse over
+  let box = document.querySelector(".box");
+  box.addEventListener("mouseover",function(){
+    this.style.backgroundColor="yellow";
+  })
+
+//   box.addEventListener("mouseover",(e)=>{
+//     e.target.style.backgroundColor = "yellow";
+// }) here we can't use this we need to use event object only with target
+
+  // 5.2 mouse out
+  box.addEventListener("mouseout",function(){
+    this.style.backgroundColor="red"
+  })
+
+  //5.3 mouse move
+  // to move any object with mouse move it should havr position to be absolute in css
+  //attach it to window not box then it will move in all directions
+
+  // if want to see this uncommnet below
+
+//   window.addEventListener("mousemove",(e)=>{
+//     console.log(e.clientX,e.clientY);
+//     box.style.top=e.clientY+"px";
+//     box.style.left=e.clientX+"px";
+
+//   })
+
+// 5. keydown and up
+let k = document.querySelector(".key");
+// window.addEventListener("keydown",(e)=>{
+//     k.textContent=e.key;
+// })
+
+//key up (works wehn key released)
+window.addEventListener("keyup",(e)=>{
+    k.textContent=e.key;
+})
+
+    </script>
+</body>
+</html>
