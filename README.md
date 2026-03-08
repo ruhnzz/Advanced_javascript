@@ -1575,7 +1575,7 @@ e.clientX
 ```
 
 
-# 12. Quick Interview Summary
+## Quick Interview Summary
 
 Event
 → An action performed by the user or browser.
@@ -1606,6 +1606,7 @@ Important Methods
 addEventListener()
 preventDefault()
 ```
+
 
 
 
