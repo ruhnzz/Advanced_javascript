@@ -1610,7 +1610,7 @@ preventDefault()
 You can copy-paste these **short interview-friendly notes** for **Event Bubbling**.
 
 
-## Event Bubbling 
+# Event Bubbling 
 
 ### Definition
 
@@ -1760,6 +1760,7 @@ Common Methods
 event.target
 event.stopPropagation()
 ```
+
 
 
 
