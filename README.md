@@ -1607,6 +1607,162 @@ addEventListener()
 preventDefault()
 ```
 
+You can copy-paste these **short interview-friendly notes** for **Event Bubbling**.
+
+
+## Event Bubbling 
+
+### Definition
+
+**Event Bubbling** is a mechanism in the DOM where an event starts from the **target element** and then propagates (bubbles) upward through its **parent elements** until it reaches the root (`document`).
+
+In simple words:
+
+> When an event happens on a child element, it also triggers the event on its parent elements.
+
+
+## Event Bubbling Flow
+
+Example DOM structure:
+
+```
+body
+ └── div.nav
+      └── button
+```
+
+If the **button is clicked**, the event flow will be:
+
+```
+button → div.nav → body → document
+```
+
+The event starts from the **target element** and moves upward.
+
+
+### Example
+
+```javascript
+document.querySelector(".nav").addEventListener("click", ()=>{
+  alert("Clicked on nav");
+});
+```
+
+HTML:
+
+```html
+<div class="nav">
+  <h1>Event Bubbling</h1>
+  <a href="">Home</a>
+  <a href="">About</a>
+  <button>Click me</button>
+</div>
+```
+
+### Behavior
+
+Even though the event listener is attached only to `.nav`, clicking any child element will trigger the event.
+
+Examples:
+
+Clicking:
+
+```
+Home
+About
+Button
+```
+
+Output:
+
+```
+Clicked on nav
+```
+
+This happens because of **event bubbling**.
+
+
+### Important Concept: `event.target`
+
+`event.target` returns the **actual element where the event occurred**.
+
+Example:
+
+```javascript
+document.querySelector("ul").addEventListener("click",(e)=>{
+  console.log(e.target);
+});
+```
+
+If the user clicks:
+
+```
+<li>Apple</li>
+```
+
+`event.target` will return:
+
+```
+<li>Apple</li>
+```
+
+
+### Why Event Bubbling is Useful
+
+Event bubbling allows us to use **Event Delegation**, where we attach a single event listener to a parent element instead of multiple child elements.
+
+Example:
+
+```javascript
+document.querySelector("ul").addEventListener("click",(e)=>{
+  e.target.classList.toggle("lt");
+});
+```
+
+Here one listener on `ul` handles clicks for all `li`.
+
+
+### Stopping Event Bubbling
+
+Sometimes we want to prevent the event from moving to parent elements.
+
+We can use:
+
+```
+event.stopPropagation()
+```
+
+Example:
+
+```javascript
+button.addEventListener("click",(e)=>{
+  e.stopPropagation();
+});
+```
+
+Now the event will **not reach the parent elements**.
+
+
+### Quick Interview Summary
+
+Event Bubbling
+→ A process where an event starts from the **target element** and propagates upward through its **parent elements** in the DOM.
+
+Event Flow
+
+```
+Target Element → Parent → Body → Document
+```
+
+Common Methods
+
+```
+event.target
+event.stopPropagation()
+```
+
+
+
 
 
 
