@@ -1263,6 +1263,353 @@ Important rule
 Always pass the function reference (without parentheses).
 
 
+Below are **clean, structured interview-friendly notes** based on your code. You can **directly copy-paste this into your GitHub README**.
+
+---
+
+# Common Events
+
+## Important Rule about `this` in Events
+
+### Works with normal functions
+
+```javascript
+function onClick(){
+  this.style.color = "red";
+}
+```
+
+### Works with function expressions
+
+```javascript
+let onClick = function(){
+  this.style.color = "red";
+}
+```
+
+### Does NOT work with arrow functions
+
+```javascript
+let onClick = ()=>{
+  this.style.color = "red"; // ❌ this does not refer to the element
+}
+```
+
+**Reason**
+
+Arrow functions **do not have their own `this`**.
+
+Instead, use the **event object**:
+
+```javascript
+let onClick = (e)=>{
+  e.target.style.color = "red";
+}
+```
+
+## Event Object
+
+**Definition**
+
+The **event object** contains information about the event that occurred.
+
+It is automatically passed to the event handler.
+
+Example:
+
+```javascript
+element.addEventListener("click", function(e){
+  console.log(e);
+});
+```
+
+Common properties:
+
+```
+e.target → element that triggered the event
+e.key → key pressed
+e.clientX → mouse X position
+e.clientY → mouse Y position
+e.data → typed character in input event
+```
+
+
+## 1. Click Event
+
+Triggered when a user **clicks an element**.
+
+Example:
+
+```javascript
+let h1 = document.querySelector("h1");
+
+let onClick = function(){
+  this.style.color = "red";
+}
+
+h1.addEventListener("click", onClick);
+```
+
+## 2. Input Event
+
+Triggered **every time the user types in an input field**.
+
+Example:
+
+```javascript
+let onInput = function(e){
+  if(e.data !== null){
+    console.log(e.data);
+  }
+}
+
+document.querySelector("input").addEventListener("input", onInput);
+```
+
+`e.data` → the character typed by the user.
+
+
+##  3. Change Event
+
+Triggered when the **value of an input/select element changes and loses focus**.
+
+Example:
+
+```javascript
+let onChange = function(e){
+  console.log(e.target.value);
+
+  document.querySelector("#change").textContent =
+  `${e.target.value} Device Selected`;
+}
+
+document.querySelector("select").addEventListener("change", onChange);
+```
+
+Used with:
+
+* `<select>`
+* `<input>`
+* `<textarea>`
+
+
+## 4. Submit Event
+
+Triggered when a **form is submitted**.
+
+By default, submitting a form **reloads the page**.
+
+To stop this behavior, use:
+
+```
+event.preventDefault()
+```
+
+Example:
+
+```javascript
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+});
+```
+
+
+## Example Use Case – Dynamic Profile Card
+
+Steps performed in the code:
+
+1. Prevent form refresh using `preventDefault()`
+2. Read input values
+3. Create elements dynamically
+4. Add profile image and user details
+5. Append the card to the page
+6. Reset the form fields
+
+Example:
+
+```javascript
+let card = document.createElement("div");
+card.classList.add("card");
+```
+
+
+## 5. Mouse Events
+
+## Mouseover Event
+
+Triggered when the **mouse enters an element**.
+
+Example:
+
+```javascript
+box.addEventListener("mouseover", function(){
+  this.style.backgroundColor = "yellow";
+});
+```
+
+
+## Mouseout Event
+
+Triggered when the **mouse leaves an element**.
+
+Example:
+
+```javascript
+box.addEventListener("mouseout", function(){
+  this.style.backgroundColor = "red";
+});
+```
+
+
+## Mousemove Event
+
+Triggered **whenever the mouse moves**.
+
+Commonly used for:
+
+* drag effects
+* tracking mouse position
+* games
+
+Example:
+
+```javascript
+window.addEventListener("mousemove",(e)=>{
+  box.style.top = e.clientY + "px";
+  box.style.left = e.clientX + "px";
+});
+```
+
+Important CSS requirement:
+
+```
+position: absolute
+```
+
+
+## 6. Keyboard Events
+
+Keyboard events detect when keys are pressed.
+
+Common keyboard events:
+
+```
+keydown
+keyup
+keypress
+```
+
+
+## Keydown Event
+
+Triggered **when a key is pressed**.
+
+Example:
+
+```javascript
+window.addEventListener("keydown",(e)=>{
+  console.log(e.key);
+});
+```
+
+
+## Keyup Event
+
+Triggered **when the key is released**.
+
+Example:
+
+```javascript
+window.addEventListener("keyup",(e)=>{
+  k.textContent = e.key;
+});
+```
+
+`e.key` → returns the key pressed.
+
+Example output:
+
+```
+a
+Enter
+ArrowUp
+Space
+```
+
+
+## Best Practices (Interview Important)
+
+### 1. Prefer `addEventListener`
+
+Avoid inline events like:
+
+```html
+<button onclick="clickMe()">
+```
+
+Use:
+
+```javascript
+button.addEventListener("click", clickMe);
+```
+
+
+### 2. Use normal functions when `this` is needed
+
+Arrow functions do not bind `this`.
+
+
+### 3. Use `preventDefault()` for forms
+
+Prevents page reload.
+
+
+### 4. Use event object when needed
+
+Example:
+
+```
+e.target
+e.key
+e.clientX
+```
+
+
+# 12. Quick Interview Summary
+
+Event
+→ An action performed by the user or browser.
+
+Event Listener
+→ A function that runs when an event occurs.
+
+Event Object
+→ Contains information about the event.
+
+Common Events
+
+```
+click
+input
+change
+submit
+mouseover
+mouseout
+mousemove
+keydown
+keyup
+```
+
+Important Methods
+
+```
+addEventListener()
+preventDefault()
+```
+
+
+
+
 
 
 
