@@ -2351,6 +2351,187 @@ Explanation:
 * The message **will not appear**
 
 
+# Web Storage and Cookies in JavaScript
+
+Browsers provide mechanisms to **store data on the client side** so that information can persist between page reloads or user sessions.
+
+The main client-side storage methods are:
+
+1. **localStorage**
+2. **sessionStorage**
+3. **Cookies**
+
+
+# 1. localStorage
+
+`localStorage` is used to **store data in the browser permanently** until it is manually removed.
+
+### Key Features
+
+* Data **persists even after the browser is closed**
+* Storage limit: **about 5MB**
+* Data is stored as **strings**
+* Works on **same origin (domain + protocol)**
+
+
+### Storing Data
+
+Use `setItem(key, value)` to store data.
+
+```javascript
+localStorage.setItem("name","abc");
+```
+
+
+### Retrieving Data
+
+Use `getItem(key)` to retrieve stored data.
+
+```javascript
+let val = localStorage.getItem("name");
+console.log(val);
+```
+
+
+### Removing a Specific Item
+
+```javascript
+localStorage.removeItem("name");
+```
+
+
+### Clearing Entire Storage
+
+```javascript
+localStorage.clear();
+```
+
+This removes **all stored data**.
+
+
+# Storing Arrays or Objects
+
+localStorage stores **only strings**, so complex data must be converted.
+
+### Convert to String
+
+Use `JSON.stringify()`.
+
+```javascript
+localStorage.setItem("friends", JSON.stringify(["abc","def","ghi"]));
+```
+
+
+### Convert Back to Array/Object
+
+Use `JSON.parse()`.
+
+```javascript
+let arr = JSON.parse(localStorage.getItem("friends"));
+```
+
+Now `arr` becomes a **JavaScript array again**.
+
+
+# 2. sessionStorage
+
+`sessionStorage` works **similar to localStorage**, but the data lasts **only for the browser tab session**.
+
+### Key Features
+
+* Data is **deleted when the tab or browser is closed**
+* Storage limit: **around 5MB**
+* Stores data as **strings**
+* Same methods as localStorage
+
+
+### Example
+
+```javascript
+sessionStorage.setItem("user","rahul");
+let user = sessionStorage.getItem("user");
+```
+
+
+# Difference Between localStorage and sessionStorage
+
+| Feature       | localStorage            | sessionStorage   |
+| ------------- | ----------------------- | ---------------- |
+| Persistence   | Permanent               | Until tab closes |
+| Storage Limit | ~5MB                    | ~5MB             |
+| Scope         | All tabs of same origin | Only current tab |
+
+
+# 3. Cookies
+
+Cookies are used to **store small pieces of data in the browser** and are often used for **authentication, tracking, and user preferences**.
+
+### Key Features
+
+* Storage size: **about 4KB**
+* Sent **automatically to the server with every HTTP request**
+* Often used for **login sessions and tracking**
+
+
+### Creating Cookies
+
+```javascript
+document.cookie = "name=ruh";
+document.cookie = "age=20";
+```
+
+
+### Characteristics of Cookies
+
+* Small storage capacity
+* Sent to the server automatically
+* Can have expiration time
+* Used for **authentication and session management**
+
+
+# Storage Size Comparison
+
+| Storage Type   | Capacity |
+| -------------- | -------- |
+| Cookies        | ~4KB     |
+| localStorage   | ~5MB     |
+| sessionStorage | ~5MB     |
+
+
+# Common Use Cases
+
+### localStorage
+
+* Theme preferences
+* User settings
+* Cached data
+
+### sessionStorage
+
+* Temporary form data
+* Session-specific data
+
+### Cookies
+
+* Login authentication
+* Session IDs
+* Tracking user activity
+
+
+# Key Interview Points
+
+* `localStorage` and `sessionStorage` are part of the **Web Storage API**
+* Both store **data as strings**
+* `JSON.stringify()` and `JSON.parse()` are used for storing objects or arrays
+* Cookies are **automatically sent to the server**
+* Web Storage has **larger capacity and better performance than cookies**
+
+✅ **Short Interview Definition**
+
+> Web Storage in JavaScript allows browsers to store data locally using `localStorage` and `sessionStorage`. These APIs provide larger storage compared to cookies and store data as key-value pairs. Cookies, on the other hand, are small data pieces sent automatically to the server with every request.
+
+
+
 
 
 
