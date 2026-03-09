@@ -1790,7 +1790,7 @@ If you click:
 ```
 
 
-##  Event Delegation
+#  Event Delegation
 
 ### Definition
 
@@ -1926,6 +1926,147 @@ Event delegation is used in:
 * Dynamic menus
 * Comment systems
 * Infinite scrolling lists
+
+# Event Capturing 
+
+## Definition
+
+**Event Capturing** is a phase of the DOM event flow where the event travels from the **top-level element (document)** down to the **target element**.
+
+It is also called the **capture phase**.
+
+
+
+# Event Flow in the DOM
+
+Whenever an event occurs, it goes through **two phases**:
+
+```
+1. Capturing Phase  → Top → Target
+2. Bubbling Phase   → Target → Top
+```
+
+Example DOM structure:
+
+```
+document
+  ↓
+html
+  ↓
+body
+  ↓
+div.a
+  ↓
+div.b
+  ↓
+div.c
+  ↓
+button (target)
+```
+
+Event flow:
+
+```
+Capturing Phase: document → html → body → a → b → c → button
+Bubbling Phase : button → c → b → a → body → html → document
+```
+
+
+# Default Behavior
+
+By default, **event listeners execute during the bubbling phase**.
+
+
+# Enabling Event Capturing
+
+To run an event listener during the **capturing phase**, we pass `true` as the third argument.
+
+Syntax:
+
+```javascript
+element.addEventListener("event", handler, true);
+```
+
+Example:
+
+```javascript
+a.addEventListener("click", ()=>{
+  alert("a clicked");
+}, true);
+```
+
+Here the event listener runs **during the capturing phase**.
+
+---
+
+# Example Behavior
+
+HTML structure:
+
+```
+a
+ └── b
+      └── c
+           └── button
+```
+
+Code:
+
+```javascript
+a.addEventListener("click", ()=>{
+  alert("a clicked");
+}, true);
+
+b.addEventListener("click", ()=>{
+  alert("b clicked");
+});
+
+c.addEventListener("click", ()=>{
+  alert("c clicked");
+});
+
+btn.addEventListener("click",(e)=>{
+  alert("btn clicked");
+  e.stopPropagation();
+});
+```
+
+When clicking the **button**, execution order will be:
+
+```
+a clicked   (capturing phase)
+btn clicked (target)
+```
+
+Because `stopPropagation()` stops the event before bubbling continues.
+
+## Important Points
+
+• Every DOM event goes through **two phases**: capturing and bubbling.
+
+• **Capturing phase runs first**, then bubbling phase runs.
+
+• By default, event listeners execute in **bubbling phase**.
+
+• To activate capturing phase, pass **`true`** in `addEventListener`.
+
+• `stopPropagation()` prevents the event from moving to parent elements.
+
+---
+
+## Quick Interview Summary
+
+**Event Capturing**
+
+A process where the event travels from the **top of the DOM tree to the target element** before bubbling back up.
+
+Syntax:
+
+```javascript
+element.addEventListener("click", handler, true);
+```
+
+
 
 
 
