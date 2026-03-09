@@ -1735,12 +1735,14 @@ event.stopPropagation()
 Example:
 
 ```javascript
-button.addEventListener("click",(e)=>{
+child.addEventListener("click", (e) => {
+  console.log("Child clicked");
   e.stopPropagation();
 });
 ```
 
 Now the event will **not reach the parent elements**.
+In event bubbling, both child and parent event listeners execute when the child is clicked. To stop the parent listener from executing, we use event.stopPropagation().
 
 
 ### Quick Interview Summary
@@ -1760,6 +1762,172 @@ Common Methods
 event.target
 event.stopPropagation()
 ```
+
+##  Event Target
+
+### Definition
+
+`event.target` refers to the **actual element where the event occurred**.
+
+Example:
+
+```javascript
+document.querySelector("ul").addEventListener("click",(e)=>{
+  console.log(e.target);
+});
+```
+
+If you click:
+
+```
+<li>Apple</li>
+```
+
+`e.target` will be:
+
+```
+<li>Apple</li>
+```
+
+
+##  Event Delegation
+
+### Definition
+
+**Event Delegation** is a technique where we attach a **single event listener to a parent element** to handle events for multiple child elements using **event bubbling**.
+
+This improves performance and reduces code duplication.
+
+
+# Example of Event Delegation
+
+HTML
+
+```html
+<ul>
+  <li>Apple</li>
+  <li>Ball</li>
+  <li>Cat</li>
+  <li>Dog</li>
+</ul>
+```
+
+Instead of writing event listeners for each `<li>`:
+
+❌ Bad approach
+
+```javascript
+li1.addEventListener(...)
+li2.addEventListener(...)
+li3.addEventListener(...)
+```
+
+✅ Good approach
+
+```javascript
+document.querySelector("ul").addEventListener("click",(e)=>{
+  e.target.classList.toggle("lt");
+});
+```
+
+CSS
+
+```css
+.lt{
+  text-decoration: line-through;
+}
+```
+
+### Behavior
+
+When any `<li>` is clicked:
+
+```
+Apple → gets strike-through
+Ball → gets strike-through
+Cat → gets strike-through
+Dog → gets strike-through
+```
+
+
+# Why Event Delegation is Useful
+
+Advantages:
+
+1. **Better performance**
+   Only one event listener is used instead of many.
+
+2. **Less code**
+   No need to attach listeners to every element.
+
+3. **Works for dynamically added elements**
+
+Example:
+
+If a new `<li>` is added later, it will still work without adding another listener.
+
+
+# Important Terms
+
+### Target Element
+
+The element that **actually triggered the event**.
+
+```
+e.target
+```
+
+### Parent Element
+
+The element where the **event listener is attached**.
+
+
+# Example Flow
+
+If user clicks:
+
+```
+<li>Cat</li>
+```
+
+Event flow:
+
+```
+li → ul → div → body → document
+```
+
+Because of this bubbling, the `ul` listener can detect the click.
+
+# Quick Interview Summary
+
+**Event Bubbling**
+
+An event propagation mechanism where the event moves from the **target element to its parent elements**.
+
+**Event Delegation**
+
+A technique of attaching a **single event listener to a parent element** to manage events for its children using **event bubbling**.
+
+**event.target**
+
+Returns the **element that triggered the event**.
+
+**stopPropagation()**
+
+Stops the event from bubbling to parent elements.
+
+
+✅ **Real-World Use Cases**
+
+Event delegation is used in:
+
+* Todo lists
+* Table row actions
+* Dynamic menus
+* Comment systems
+* Infinite scrolling lists
+
+
 
 
 
