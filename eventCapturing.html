@@ -1,0 +1,72 @@
+<!-- Event Capturing
+Note: whenever any event is raised it is carreid in teo phases
+phase-1: event will be reached from top level to targeted 
+phase-2: event will start form target to top level parents
+for every event the phase 1 will initiated first then pahse 2 because pahse is true by default
+but we can see only phase 2 result to see phase 1 result we have enable the capture phase
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            border: 2px solid black;
+            background-color: red;
+            height: 300px;
+            width: 300px;
+        }
+        .b{
+            border: 2px solid black;
+            background-color: blue;
+            height: 200px;
+            width: 200px;
+        }
+         .c{
+            border: 2px solid black;
+            background-color:yellow;
+            height: 100px;
+            width: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="a">
+        <div class="b">
+            <div class="c">
+                <button>click me</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let a = document.querySelector(".a");
+        let b = document.querySelector(".b");
+        let c = document.querySelector(".c");
+        let btn = document.querySelector("button");
+        a.addEventListener("click",()=>{
+            alert("a clicked");
+            
+        },true) // with true capture phase is activated a will be executed first then target
+        // if the pahse 1 is activated the event listener of that element will not be executed again in event bubbling
+        b.addEventListener("click",()=>{
+            alert("b clicked");
+        })
+        c.addEventListener("click",()=>{
+            alert("c clicked"); //it starts form c to goes till a because of event bubbling
+        })
+        btn.addEventListener("click",(e)=>{
+            alert("btn clicked");
+            e.stopPropagation(); //stops the flow from target to toplevel parent
+        })
+        // because event bubbling when clicked on button all the event listners will be executed
+        //which is phase 2
+
+        // to start capture we have write true in listener after function 
+    </script>
+</body>
+</html>
