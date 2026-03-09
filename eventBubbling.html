@@ -70,6 +70,7 @@
         </div>
     </div>
     <div class="box">
+        <h1>Event Deligation is acheived by Event bubbling</h1>
         <ul>
             <li>Apple</li>
             <li>Ball</li>
@@ -86,7 +87,8 @@
       // eventlistener becuase they use parents eventlistener if they don't find there own
 
       //whenever we click on any list item it should be striked so istead of writing eventlistener on 
-      //every li using event bubbling we will write on ul
+      //every li using event bubbling we will write on ul 
+      //appltying event Listener on parent instead on multiple child is called event deligation
       document.querySelector("ul").addEventListener("click",(e)=>{
         // e.target.style.textDecoration="line-through"
         e.target.classList.toggle("lt");
